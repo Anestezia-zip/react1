@@ -1,11 +1,14 @@
 import "./App.css";
-import PostComponent, { LoremPostComponent } from "./components/Posts/PostComponent";
+import ContextApp from "./components/Users/context/ContextApp";
+import PropertyDrillApp from "./components/Users/property-drill/PropertyDrillApp";
+import StateLiftingApp from "./components/Users/state-lifting/StateLiftingApp";
 
 const App = () => {
   return (
     <div className="App">
-        <PostComponent />
-        <LoremPostComponent />
+      <PropertyDrillApp/>
+      <StateLiftingApp/>
+      <ContextApp/>
     </div>
   );
 };

@@ -1,14 +1,15 @@
 import "./App.css";
-import ContextApp from "./components/Users/context/ContextApp";
-import PropertyDrillApp from "./components/Users/property-drill/PropertyDrillApp";
-import StateLiftingApp from "./components/Users/state-lifting/StateLiftingApp";
+import CommentComponent from "./components/Forms/CommentComponent";
+import UserComponent from "./components/Forms/UserComponent";
+import CreateUserForm from "./components/Forms/CreateUserForm";
+
 
 const App = () => {
   return (
     <div className="App">
-      <PropertyDrillApp/>
-      <StateLiftingApp/>
-      <ContextApp/>
+      <UserComponent/>
+      <CommentComponent/>
+      <CreateUserForm/>
     </div>
   );
 };

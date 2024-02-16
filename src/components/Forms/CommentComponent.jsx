@@ -2,37 +2,30 @@ import { useEffect, useRef } from "react"
 import { useForm } from "react-hook-form";
 import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from "joi";
+import { Services } from "./apiServices";
 
 const CommentComponent = () => {
     useEffect(() => {
-        console.log('Comment Component render');
     })
 
     const schema = Joi.object({
-        title: Joi.string().required(),
+        title: Joi.string().required().min(6).messages({
+            'string.empty': 'Field is required',
+            'string.min': 'Minimum 6 symbols'
+        }),
         comment: Joi.string().required()
     })
 
     const { handleSubmit, register, watch, formState: {errors} } = useForm(
         {
             resolver: async (data, context, options) => {
-                console.log('formData', data);
-                console.log('validation result', await joiResolver(schema)(data, context, options));
                 return joiResolver(schema)(data, context, options)
             }
         }
     );
 
     const onSubmit = (data) => {
-        console.log(errors);
-        fetch('http://jsonplaceholder.typicode.com/comments', {
-            method: 'POST',
-            body: JSON.stringify(data)
-        })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-
-        console.log('Comment was sended', data);
+        Services.handleComment(data)
     }
 
   return (

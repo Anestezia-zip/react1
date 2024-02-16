@@ -9,7 +9,6 @@ const App = () => {
     <div className="App">
       <UserComponent/>
       <CommentComponent/>
-      <CreateUserForm/>
     </div>
   );
 };

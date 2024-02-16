@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { Services } from "./apiServices"
 
 
 const UserComponent = () => {
@@ -11,28 +12,17 @@ const UserComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://jsonplaceholder.typicode.com/users', {
-            method: 'POST',
-            body: JSON.stringify({
-                email: emailRef.current.value,
-                password: passRef.current.value,
-            })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-
-        console.log('User was successfully created', emailRef.current.value, passRef.current.value);
-
+        Services.handleUser(emailRef, passRef)
     }
 
   return (
     <div>
         <form onSubmit={handleSubmit} style={{backgroundColor: 'lightblue', padding:'10px'}}>
             <div>
-                Email: <input type="text" ref={emailRef}/>
+                Email: <input type="text" ref={emailRef} required/>
             </div>
             <div>
-                Password: <input type="password" ref={passRef}/>
+                Password: <input type="password" ref={passRef} required/>
             </div>
             <div>
                 <input type="submit" value='Login'/>

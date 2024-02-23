@@ -2,9 +2,9 @@ import "./App.css";
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from "./components/Navbar/Navbar";
-import Todos from "./components/Navbar/Todos";
-import Comments from "./components/Navbar/Comments";
-import Albums from "./components/Navbar/Albums";
+import Comments from "./class-components/Comments";
+import Photos from "./class-components/Photos";
+import Posts from "./class-components/Posts";
 
 const App = () => {
   return (
@@ -12,8 +12,8 @@ const App = () => {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/todos" element={<Todos />} />
-          <Route path="/albums" element={<Albums />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/photos" element={<Photos />} />
           <Route path="/comments" element={<Comments />} />
         </Routes>
       </Router>

@@ -28,7 +28,7 @@ const Comments = () => {
                         <>
                             <p><strong>{comment.email}</strong>: {comment.body}</p>
                             <button key={comment.id} onClick={() => handleCommentClick(comment.postId)}>
-                                <p><strong>Post ID: {comment.postId}</strong></p>
+                                <strong>Post ID: {comment.postId}</strong>
                             </button>
                         </>
                     ))}

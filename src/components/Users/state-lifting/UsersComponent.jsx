@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import User from "./User";
+import { useNavigate } from "react-router-dom";
+import { AppRoutes } from "../../../Routing/AppRoutes";
 
 const UsersComponent = (props) => {
   const [users, setUsers] = useState([]);
+
+  const navigate = useNavigate();
+  const handleClick = (userId) => navigate(AppRoutes.USERS + '/' + userId)
 
   useEffect(() => {
     getUsers();
@@ -21,7 +26,12 @@ const UsersComponent = (props) => {
         {users.map(user => {
             const userPosts = props.posts.filter(post => post.userId === user.id)
             return(
-                <User key={user.id} user={user} posts={userPosts} />
+                <User 
+                  key={user.id} 
+                  user={user} 
+                  posts={userPosts} 
+                  handleClick={() => handleClick(user.id)}
+                />
             )
         })}
     </>

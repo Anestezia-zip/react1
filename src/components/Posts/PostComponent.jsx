@@ -2,9 +2,16 @@ import { useEffect } from "react";
 import PostItem, { LoremPostItem } from "./PostItem";
 import { useState } from "react";
 import { posts } from "./posts";
+import { Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { dataActions } from "../../redux-core/actions/dataActions";
 
 const PostComponent = () => {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+  const posts = useSelector((state) => state.data.posts)
+  const store = useSelector((store) => store)
+  // console.log(store);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getPosts();
@@ -14,26 +21,20 @@ const PostComponent = () => {
     try {
       let response = await fetch("https://api.spacexdata.com/v3/capsules/");
       let data = await response.json();
-      setPosts(data);
+      dispatch(dataActions.setPosts(data));
     } catch {}
   };
 
-  return (
-    <>
-      {posts?.map((post) => (
-        <PostItem key={post.capsule_serial} post={post} />
-      ))}
-    </>
-  );
-};
+  const handleDeletePost = (id) => {
+    dispatch(dataActions.deletePostById(id))
+    console.log(id);
+  }
 
-export const LoremPostComponent = () => {
   return (
     <>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <LoremPostItem post={post} />
-        </div>
+      <Outlet/>
+      {posts?.map((post) => (
+          <PostItem key={post.capsule_serial} post={post} handleDeletePost={handleDeletePost} />
       ))}
     </>
   );

@@ -1,10 +1,10 @@
 import UsersComponent from "./UsersComponent";
 import "../../../App.css";
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 
 const StateLiftingApp = () => {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
 
   useEffect(() => {
     getPosts();
@@ -20,6 +20,7 @@ const StateLiftingApp = () => {
 
   return (
     <div className="App">
+      <Outlet/>
       <UsersComponent posts={posts} />
     </div>
   );

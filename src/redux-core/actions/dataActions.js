@@ -1,6 +1,5 @@
 export const dataActionTypes = {
     SET_POSTS: 'SET_POSTS',
-    SET_POST: 'SET_POST',
     SET_TODOS: 'SET_TODOS',
     SET_ALBUMS: 'SET_ALBUMS',
     SET_COMMENTS: 'SET_COMMENTS',
@@ -9,7 +8,6 @@ export const dataActionTypes = {
 
 export const dataActions = {
     setPosts: (posts) => ({type: dataActionTypes.SET_POSTS, payload: posts}),
-    setPost: (post) => ({type: dataActionTypes.SET_POST, payload: post}),
     setTodos: (todos) => ({type: dataActionTypes.SET_TODOS, payload: todos}),
     setAlbums: (albums) => ({type: dataActionTypes.SET_ALBUMS, payload: albums}),
     setComments: (comments) => ({type: dataActionTypes.SET_COMMENTS, payload: comments}),

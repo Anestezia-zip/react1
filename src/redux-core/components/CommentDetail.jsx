@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchCommentById, fetchPostById } from '../actions/dataActions';
+import { fetchPostById } from '../actions/dataActions';
 
 const CommentDetail = () => {
     const { id } = useParams();

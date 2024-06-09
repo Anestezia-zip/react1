@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaTrash } from 'react-icons/fa';
 
 const PostItem = (props) => {
   const { post, handleDeletePost } = props;
@@ -10,7 +11,7 @@ const PostItem = (props) => {
           <p style={{ width: "300px" }}>
             <b>Serial:</b> {post.capsule_serial}
           </p>
-          <button onClick={()=>handleDeletePost(post.capsule_serial)}>Delete</button>
+          <button onClick={()=>handleDeletePost(post.capsule_serial)}>Delete <FaTrash /></button>
         </div>
       )}
     </>

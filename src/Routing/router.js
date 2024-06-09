@@ -10,7 +10,6 @@ import User from "./User";
 import Todos from "../redux-core/components/Todos"
 import Albums from "../redux-core/components/Albums";
 import Comments from "../redux-core/components/Comments";
-import CommentDetail from "../redux-core/components/CommentDetail";
 
 const AppLayout = () => {
     return(
@@ -57,23 +56,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: AppRoutes.TODOS,
-                element: <PrivateRoute Component={Todos}/>,
+                element: <PrivateRoute Component={Todos}/>
             },
             {
                 path: AppRoutes.ALBUMS,
-                element: <PrivateRoute Component={Albums}/>,
+                element: <PrivateRoute Component={Albums}/>
             },
             {
-                path: "comments",
-                element: <Comments />,
-                children: [
-                    {
-                        path: ":id",
-                        element: <CommentDetail />
-                    }
-                ]
-            },
-            {},
+                path: AppRoutes.COMMENTS,
+                element: <Comments />
+            }
         ]
     }
 ])

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import { AppRoutes } from "./AppRoutes"
-import Navbar from "./Navbar"
 
 const MainPage = () => {
   return (

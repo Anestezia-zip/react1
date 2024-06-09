@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-import PostItem, { LoremPostItem } from "./PostItem";
-import { useState } from "react";
-import { posts } from "./posts";
+import PostItem from "./PostItem";
 import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { dataActions } from "../../redux-core/actions/dataActions";
@@ -9,7 +7,7 @@ import { dataActions } from "../../redux-core/actions/dataActions";
 const PostComponent = () => {
   // const [posts, setPosts] = useState([]);
   const posts = useSelector((state) => state.data.posts)
-  const store = useSelector((store) => store)
+  // const store = useSelector((store) => store)
   // console.log(store);
   const dispatch = useDispatch()
 
